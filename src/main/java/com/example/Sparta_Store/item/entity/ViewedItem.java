@@ -1,5 +1,6 @@
 package com.example.Sparta_Store.item.entity;
 
+import com.example.Sparta_Store.user.entity.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -16,19 +17,21 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class SoldItem {
+public class ViewedItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "soldItem_id")
+    @Column(name = "viewedItem_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id", nullable = false)
     private Item item;
 
-    private int soldQuantity; // N일 동안 판매된 수를 보기 위한 판매량순으로 보기 위한 판매량
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user; // N일 동안 조회된 유저 수를 보기 위한 유저
 
-    private LocalDate soldAt; // N일 동안 판매된 수를 보기 위한 팬매된 날짜
+    private LocalDate viewedAt; // N일 동안 조호된 수를 보기 위한 조회된 날짜
 
 }
