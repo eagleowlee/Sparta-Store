@@ -47,7 +47,10 @@ public class UserService {
     public UserResponseDto updateInfo(
             Long userId,
             String name,
-            AddressDto address
+            AddressDto address,
+            int age,
+            int height,
+            int weight
     ) { // 유저 아이디, 네임 , 주소를 인자로 받음
 
         User user = userRepository.findById(userId) // 아이디를 조회
@@ -57,7 +60,13 @@ public class UserService {
                 ? new Address(address.city(), address.street(), address.zipcode())
                 : null;
 
-        user.updateUserInfo(name, newAddress != null ? newAddress : user.getAddress());; // 있으면 이름과 주소 변경
+        user.updateUserInfo(
+                name,
+                newAddress != null ? newAddress : user.getAddress(),
+                age,
+                height,
+                weight
+        );; // 있으면 이름과 주소 변경
 
         return UserResponseDto.updateInfoSuccess();
     }

@@ -40,17 +40,39 @@ public class User extends TimestampedEntity {
     @Column(nullable = false)
     private boolean isDeleted;
 
-    public User(String email, String password ,String name, Address address){
+    @Column(nullable = true)
+    private int age;
+
+    @Column(nullable = true)
+    private int height;
+
+    @Column(nullable = true)
+    private int weight;
+
+    public User(String email,
+            String password ,
+            String name,
+            Address address,
+            int age,
+            int height,
+            int weight
+    ){
         this.email = email;
         this.password = password;
         this.name = name;
         this.address = address;
         this.customerKey = UUID.randomUUID().toString();
+        this.age = age;
+        this.height = height;
+        this.weight = weight;
     }
 
-    public void updateUserInfo(String name, Address address) {
+    public void updateUserInfo(String name, Address address, int age, int height, int weight) {
         this.name = name;
         this.address = address;
+        this.age = age;
+        this.height = height;
+        this.weight = weight;
     }
 
     public void disableUser() {

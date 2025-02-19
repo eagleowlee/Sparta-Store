@@ -60,7 +60,10 @@ public class UserController {
                 dto.name(),
                 dto.address() != null
                     ? AddressDto.toDto(dto.address().city(), dto.address().street(), dto.address().zipcode())
-                    : null
+                    : null,
+                dto.age(),
+                dto.height(),
+                dto.weight()
         );
 
         return ResponseEntity.status(HttpStatus.OK)
