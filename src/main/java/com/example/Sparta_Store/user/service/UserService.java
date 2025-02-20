@@ -21,7 +21,10 @@ public class UserService {
             String email,
             String password,
             String name,
-            Address address
+            Address address,
+            int age,
+            int height,
+            int weight
     ) {
         String encodePassword = passwordEncoder.encode(password);
 
@@ -33,7 +36,10 @@ public class UserService {
                 email,
                 encodePassword,
                 name,
-                address
+                address,
+                age,
+                height,
+                weight
         );
 
         User saveUser = userRepository.save(user);

@@ -17,6 +17,9 @@ public record UserRequestDto(
         @NotBlank
         @Pattern(regexp = "^(?!ADMIN$).*$", message = "이름에 'ADMIN' 을 사용할 수 없습니다.")
         String name,
-        Address address
+        Address address,
+        int age,
+        int height,
+        int weight
 ) {
 }

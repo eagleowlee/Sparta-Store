@@ -32,7 +32,10 @@ public class UserController {
                         requestDto.email(),
                         requestDto.password(),
                         requestDto.name(),
-                        requestDto.address()
+                        requestDto.address(),
+                        requestDto.age(),
+                        requestDto.height(),
+                        requestDto.weight()
                 );
 
         return ResponseEntity.status(HttpStatus.CREATED)
